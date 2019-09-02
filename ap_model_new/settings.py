@@ -25,7 +25,7 @@ SECRET_KEY = 'nl0=o*&fixiwu$(p_8k@7+6^=rnx$0#=7=s_fvqyc-6%uoa-nc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['popog.azurewebsites.net']
 
 
 # Application definition
