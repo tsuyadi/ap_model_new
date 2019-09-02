@@ -25,7 +25,7 @@ SECRET_KEY = 'nl0=o*&fixiwu$(p_8k@7+6^=rnx$0#=7=s_fvqyc-6%uoa-nc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['popog.azurewebsites.net']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
     'ap_model.agencies',
 ]
