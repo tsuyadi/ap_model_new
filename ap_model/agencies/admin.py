@@ -22,3 +22,10 @@ class UserBranchAdmin(admin.ModelAdmin):
     list_display = ['user', 'branch']
     list_filter = ('branch__name',)
     search_fields = ['user__username', 'branch__name']
+
+
+@admin.register(Level)
+class LevelAdmin(admin.ModelAdmin):
+    list_display = ['user', 'type', 'parent']
+    list_filter = ('type',)
+    search_fields = ['user__username']

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_extensions.db.models import TimeStampedModel
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 # Create your models here.
@@ -160,3 +161,73 @@ class AgentProfile(TimeStampedModel):
             name = self.code
 
         return "Agent Profile for %s" % name
+
+
+class Level(MPTTModel, TimeStampedModel):
+    """Table for Agent Level"""
+    MANAGEMENT = 1
+    BRANCH_ADMIN = 2
+    BRANCH_MANAGEMENT = 102
+    SRSH = 3
+    RSH = 4
+    RD = 5
+    RMB = 6
+    AMB = 7
+    AMP = 14
+    RMP = 8
+    FC = 9
+    SUB_MANAGEMENT = 10
+    TD = 11
+    TM = 12
+    TC = 13
+    ETC = 15
+    STC = 16
+    RBM = 17
+    EBC = 18
+    SBC = 19
+    BC = 20
+
+    LEVELS = (
+        (MANAGEMENT, "Tokio Marine Management"),
+        (SUB_MANAGEMENT, "Tokio Marine Sub Management"),  # update 23022017 (investment, underwriting, sales.support, and policyholder.services)
+        (BRANCH_ADMIN, "Branch Admin"),
+        (BRANCH_MANAGEMENT, "Branch Management"),  # update 20170911(branch_management)
+        (SRSH, "Senior Regional Sales Head"),
+        (RSH, "Regional Sales Head"),
+        (RD, "Regional Director"),
+        (RMB, "Regional Manager Builder"),
+        (AMB, "Agency Manager Builder"),
+        (AMP, "Agency Manager Producer"),
+        (RMP, "Regional Manager Producer"),
+        (FC, "Financial Consultant"),
+        (TD, "Takumi Director"),  # updated for takumi scheme 20102017
+        (TM, "Takumi Manager"),
+        (TC, "Takumi Consultant"),
+        (ETC, "Executive Takumi Consultant"),  # update for takumi scheme 28082018
+        (STC, "Senior Takumi Consultant"),
+        (RBM, "Regional Bancassurance Manager"),  # update for banca scheme 15082019
+        (EBC, "Executive Bancassurance Consultant"),  # update for banca scheme 15082019
+        (SBC, "Senior Bancassurance Consultant"),  # update for banca scheme 15082019
+        (BC, "Bancassurance Consultant"),  # update for banca scheme 15082019
+    )
+    user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
+    type = models.PositiveSmallIntegerField(choices=LEVELS, blank=True,
+                                            null=True)
+    parent = TreeForeignKey('self', null=True, blank=True,
+                            related_name='children', db_index=True, on_delete=models.CASCADE)
+
+    class MPTTMeta:
+        """Meta class for MPTT based model"""
+        order_insertion_by = ['user']
+
+    class Meta:
+        app_label = 'agencies'
+        verbose_name = u"Level"
+        verbose_name_plural = u"Agent Level"
+
+    def __init__(self, *args, **kwargs):
+        super(Level, self).__init__(*args, **kwargs)
+
+    def __unicode__(self):
+        return "Agent Level for %s" % self.user.username
+

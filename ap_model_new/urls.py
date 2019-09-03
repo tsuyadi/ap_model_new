@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from ap_model_new.views import NewLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/token_new/', NewLogin.as_view()),
     path('agencies/', include('ap_model.agencies.urls')),
 ]
