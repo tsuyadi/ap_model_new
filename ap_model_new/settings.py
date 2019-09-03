@@ -89,34 +89,34 @@ WSGI_APPLICATION = 'ap_model_new.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'sql_server.pyodbc',
-#         'NAME': 'DBPOPOG',
-#         'USER': 'popog',
-#         'PASSWORD': 'Tmli@)!(08',
-#         'HOST': 'dbpopog.database.windows.net',
-#         'PORT': '',
-#         'OPTIONS': {
-#             'driver': 'ODBC Driver 17 for SQL Server',
-#         },
-#     },
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'AzureAgencyPortal',
-        'USER': 'portaldba',
-        'PASSWORD': '2017aptmli@$',
-        'HOST': 'tmlisvrap001.database.windows.net',
+        'NAME': 'DBPOPOG',
+        'USER': 'popog',
+        'PASSWORD': 'Tmli@)!(08',
+        'HOST': 'dbpopog.database.windows.net',
         'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         },
     },
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'sql_server.pyodbc',
+#         'NAME': 'AzureAgencyPortal',
+#         'USER': 'portaldba',
+#         'PASSWORD': '2017aptmli@$',
+#         'HOST': 'tmlisvrap001.database.windows.net',
+#         'PORT': '',
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#         },
+#     },
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
