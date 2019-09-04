@@ -167,16 +167,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(DIR_NAME, 'static_root')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DIR_NAME, 'media_root')
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(DIR_NAME, 'static_root')
+#
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(DIR_NAME, 'media_root')
 
 # STATICFILES_DIRS = (
 #     os.path.join(DIR_NAME, 'static'),
 #     os.path.join(DIR_NAME, 'media'),
 # )
+
+DEFAULT_FILE_STORAGE = 'ap_model_new.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'ap_model_new.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "popogstorage"
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':
