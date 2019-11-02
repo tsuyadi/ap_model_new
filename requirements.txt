@@ -99,7 +99,7 @@ isodate==0.6.0
 msrest==0.6.9
 msrestazure==0.6.1
 oauthlib==3.1.0
-Pillow==6.1.0
+Pillow==6.2.0
 pycparser==2.19
 PyJWT==1.7.1
 pyodbc==4.0.27
