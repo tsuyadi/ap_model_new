@@ -85,7 +85,7 @@ azure-storage-queue==1.4.0
 certifi==2019.6.16
 cffi==1.12.3
 chardet==3.0.4
-cryptography==2.7
+cryptography==3.2
 Django==2.1.11
 django-extensions==2.2.1
 django-js-asset==1.2.2
